@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<codesense>
+
+    <provider>
+    
+        <!-- The selector element specifies in what document contexts the provider 
+             is active. -->
+        <selector>modulecall > module.name:capture(name) + module.function.ref</selector>
+        <completions>module.${name}</completions>
+        <complete-match>[a-zA-Z0-9-]*</complete-match>
+    </provider>
+
+</codesense> 

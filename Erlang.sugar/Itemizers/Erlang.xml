@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<itemizer>
+
+<!--
+    <recipe name="function">
+        <selector>function:capture(name)</selector>
+    </recipe>
+-->
+    <recipe name="function">
+            
+            <start-selector>function:has-child(function.name:capture(name))</start-selector>
+    	<end-selector>punctuation.period</end-selector>
+
+    </recipe>
+    
+    
+</itemizer> 

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings>
+
+    <language id="lang.erlang">
+        <root-zone>sourcecode.erlang</root-zone>
+		 <name>Erlang</name>
+        <detectors>
+	        <extension>erl</extension>
+	        <extension>hrl</extension>
+        </detectors>
+        
+	</language>
+</settings>

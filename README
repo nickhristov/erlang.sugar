@@ -1,0 +1,8 @@
+This is a sugar for the Erlang language.
+
+It includes code completion for *some* of the OTP libraries. It is work in progress and more libraries will be added.
+
+I am also planning to add a hook to allow you to index your own projects.
+
+To install, download the sugar and make sure that the folder which you expand (unzip/untar) ends in .sugar. Then place it in YOU_HOME_FOLTER/Library/Application Support/Espresso/Sugars/
+

@@ -1,0 +1,31 @@
+/*
+    @placeholder lang.erlang
+*/
+function.name {
+	color: #3a4a87;
+	font-weight: bold;
+}
+numeric {
+	color: #4336ff;
+}
+missing {
+	color: #fff;
+	background-color: #cc0000;
+	font-weight: bold;
+}
+erlang.atom {
+    color: #ce0000;
+}
+
+sourcecode.erlang> macro>macro.name {
+    color: #8d0000;
+}
+erlang, sourcecode { spell-check: disabled; }
+
+punctuation.function.beginbody {
+	font-weight: bold;    
+}
+
+sourcecode.erlang > function > function.clause > function.name {
+    color: #3a4a87;
+}
