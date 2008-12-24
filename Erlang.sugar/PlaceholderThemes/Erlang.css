@@ -3,10 +3,18 @@
 */
 function.name {
 	color: #3a4a87;
-	font-weight: bold;
 }
 numeric {
 	color: #4336ff;
+}
+
+erlang.kw {
+    color: #0000ff;
+    font-weight: bold;
+}
+
+erlang.bif {
+    color:#930000;
 }
 missing {
 	color: #fff;

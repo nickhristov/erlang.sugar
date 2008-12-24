@@ -54,6 +54,10 @@
         <completion string="unset_env"/>
         <completion string="which_applications"/>
     </set>
+    
+    <set name="module.gen_event.add_handler">
+        <completion string="EventMgrRef, Handler, Args"/>
+    </set>
     <set name="module.gen_event">
         <completion string="add_handler"/>
         <completion string="add_sup_handler"/>

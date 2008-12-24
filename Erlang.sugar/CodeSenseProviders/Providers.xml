@@ -2,12 +2,15 @@
 <codesense>
 
     <provider>
-    
-        <!-- The selector element specifies in what document contexts the provider 
-             is active. -->
-        <selector>modulecall > module.name:capture(name) + module.function.ref</selector>
+        <selector>modulecall:has-child(module.name:capture(name))</selector>
         <completions>module.${name}</completions>
         <complete-match>[a-zA-Z0-9-]*</complete-match>
     </provider>
+
+    <provider>
+           <selector>modulecall > module.name:capture(module_name) + module.function.ref:has-child(module.function.reff:capture(func_name)) + module.function.ref.arguments</selector>
+           <completions>module.${module_name}.${func_name}</completions>
+           <complete-match>[a-zA-Z0-9-]*</complete-match>
+       </provider>
 
 </codesense> 

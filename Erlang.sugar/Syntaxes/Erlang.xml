@@ -3,19 +3,19 @@
   <zones>
     <zone name="function">
       <starts-with>
-        <expression>(?=[a-z][a-z|A-Z|0-9]*\([^)]+\).*\-&gt;)</expression>
+        <expression>(?=[a-z][_|a-z|A-Z|0-9]*\([^)]+\).*\-&gt;)</expression>
       </starts-with>
       <ends-with>
-        <expression>(?=\.)</expression>
+        <expression>\.</expression>
       </ends-with>
       <subzones>
         <zone name="function.clause">
           <starts-with>
-            <expression>([a-z][a-z|A-Z|0-9]*)</expression>
+            <expression>([a-z][_|a-z|A-Z|0-9]*)</expression>
             <capture number="1" name="function.name"/>
           </starts-with>
           <ends-with>
-            <expression>[\.;]</expression>
+            <expression>;|(?=\.)</expression>
           </ends-with>
           <subzones>
               <zone name="function.clause.arguments">
@@ -28,6 +28,12 @@
                     <subzones>
                         <include collection="erlang.types"/>
                     </subzones>
+              </zone>
+              <zone name="erlang.kw">
+                  <expression>\b(fun|begin|bnot|div|rem|band|bor|bxor|bsl|bsr|when|if|end|case|of|try|catch|after)\b</expression>
+              </zone>
+              <zone name="erlang.bif">
+                  <expression>\b(exit|throw|is_integer|is_tuple|is_atom|is_binary|is_constant|is_float|is_function|is_list|is_number|is_pid|is_port|is_reference|is_record|abs|element|float|hd|length|node|round|self|size|trunc|tl)\b(?= *\()</expression>
               </zone>
               
               <zone name="function.clause.body">
@@ -50,7 +56,7 @@
       <expression>\.</expression>
     </zone>
     <zone name="macro">
-      <expression>(-)([a-z][a-z|A-Z|0-9]*)\([^)]+\).*$\n?</expression>
+      <expression>(-)([a-z][a-z|A-Z|0-9]* *)\([^)]+\).*$\n?</expression>
       <capture number="2" name="macro.name"/>
     </zone>
     <zone name="comment">
@@ -60,8 +66,17 @@
   </zones>
   <library>
     <collection name="erlang.types">
-        <zone name="invalid.syntax.missing">
-              <expression>([a-z|A-Z|0-9]+\s+[a-z|A-Z|0-9]+)|(\[\))|(\(\])|(\(\.)|(\[\.)|(\(;)|(\[;)</expression>
+        <zone name="erlang.kw">
+            <expression>\b(fun|begin|bnot|div|rem|band|bor|bxor|bsl|bsr|when|if|end|case|of|try|catch|after)\b</expression>
+        </zone>
+        <zone name="erlang.bif">
+            <expression>\b(exit|throw|is_integer|is_tuple|is_atom|is_binary|is_constant|is_float|is_function|is_list|is_number|is_pid|is_port|is_reference|is_record|abs|element|float|hd|length|node|round|self|size|trunc|tl)\b(?= *\()</expression>
+        </zone>
+
+        <zone name="invalid.syntax.missing">              <expression>([a-z|A-Z|0-9]+\s+[a-z|A-Z|0-9]+)|(\[\))|(\(\])|(\(\.)|(\[\.)|(\(;)|(\[;)</expression>
+        </zone>
+        <zone name="invalid.subtract.atom">
+              <expression>-[a-z][a-z|A-Z|0-9]+ *(?!\()</expression>
         </zone>
         <zone name="comment">
            <expression>%(.*)$\n?</expression>
@@ -94,22 +109,34 @@
       </zone>
       <zone name="modulecall">
         <starts-with>
-          <expression>(?=[a-z][a-z|A-Z|0-9]*:)</expression>
+          <expression>(?=[a-z][_|a-z|A-Z|0-9]*:)</expression>
         </starts-with>
         <ends-with>
           <expression>\)</expression>
         </ends-with>
         <subzones>
           <zone name="module.name">
-            <expression>\b[a-z]+[a-z|A-Z|0-9]*\b(?=:)</expression>
+            <expression>\b[a-z]+[_|a-z|A-Z|0-9]*\b(?=:)</expression>
           </zone>
           <zone name="module.function.ref">
             <starts-with>
-              <expression>:</expression>
+              <expression>:([a-z][a-z|A-Z|0-9|_]*)*</expression>
+              <capture number="1" name="module.function.reff"/>
             </starts-with>
             <ends-with>
-              <expression>[\s,.;\(\)]</expression>
+              <expression>(?=[\s,.;\(\)])</expression>
             </ends-with>
+          </zone>
+          <zone name="module.function.ref.arguments">
+              <starts-with>
+                <expression>\(</expression>
+              </starts-with>
+              <ends-with>
+                <expression>(?=\))</expression>
+              </ends-with>
+              <subzones>
+                  <include collection="erlang.types"/>
+              </subzones>
           </zone>
         </subzones>
       </zone>
