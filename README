@@ -6,3 +6,10 @@ I am also planning to add a hook to allow you to index your own projects.
 
 To install, download the sugar and make sure that the folder which you expand (unzip/untar) ends in .sugar. Then place it in YOU_HOME_FOLTER/Library/Application Support/Espresso/Sugars/
 
+TODO:
+   - finish syntax: including better itemizer for functions
+   - add support for code completion of function parameters.
+   - write a script to create completion libraries based on open file (i.e a primitive form of project/file indexing). 
+   - text actions:
+       - erlang source code lint
+       - compile       
