@@ -1,13 +1,28 @@
 This is a sugar for the Erlang language.
 
-It includes code completion for *some* of the OTP libraries. It is work in progress and more libraries will be added.
+Installation:
 
-I am also planning to add a hook to allow you to index your own projects.
+I. Via plain archive download (gzip/tar/zip).
+ 1. download the sugar from github
+ 2. expand the archive
+ 3. move the erlang.sugar bundle in YOUR_HOME_FOLDER/Library/Application Support/Espresso/Sugars/
+ 4. restart Espresso
 
-To install, download the sugar and make sure that the folder which you expand (unzip/untar) ends in .sugar. Then place it in YOU_HOME_FOLTER/Library/Application Support/Espresso/Sugars/
+II. Via git.
+ 1. Make sure you have git installed (either via macports, or direct install, or fink).
+ 2. Open Terminal.app
+ 3. Type: "mkdir -p ~/Library/Application Support/Espresso/Sugars". 
+ 4. Type: "cd ~/Library/Application Support/Espresso/Sugars"
+ 5. Type: "git clone git://github.com/nickhristov/erlang.sugar.git".
+ 6. Restart espresso.
+
+ The advantage of this method is that you can very easily get updates by doing.
+ 7. Type: "cd ~/Library/Application Support/Espresso/Sugars/erlang.sugar"
+ 8. Type: "git pull master".
 
 TODO:
-   - finish syntax: including better itemizer for functions
+   - add more OPT function support
+   - review/improve sugar syntax
    - add support for code completion of function parameters.
    - write a script to create completion libraries based on open file (i.e a primitive form of project/file indexing). 
    - text actions:
